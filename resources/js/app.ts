@@ -3,6 +3,7 @@ import '../css/app.css';
 
 import { createApp, h, DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
+import { createInertiaApp as createInertiaAppSvelte } from '@inertiajs/svelte';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
@@ -19,5 +20,15 @@ createInertiaApp({
     },
     progress: {
         color: '#4B5563',
+    },
+});
+
+createInertiaAppSvelte({
+    resolve: (name) => {
+        const pages = import.meta.glob('./Pages/**/*.svelte', { eager: true });
+        return pages[`./Pages/${name}.svelte`];
+    },
+    setup({ el, App, props }) {
+        new App({ target: el, props, hydrate: true });
     },
 });
