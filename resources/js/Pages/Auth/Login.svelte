@@ -6,7 +6,7 @@
     import PrimaryButton from '@/Components/PrimaryButton.svelte';
     import TextInput from '@/Components/TextInput.svelte';
     import { Link, useForm } from '@inertiajs/svelte';
-    import { route } from '../../../../vendor/tightenco/ziggy'
+    import { route } from '../../../../vendor/tightenco/ziggy/src/js'
 
 
     export let canResetPassword: boolean = false;
