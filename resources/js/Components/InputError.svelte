@@ -3,7 +3,7 @@
 </script>
 
 {#if message}
-    <div>
+    <div {...$$restProps}>
         <p class="text-sm text-red-600">
             {message}
         </p>
