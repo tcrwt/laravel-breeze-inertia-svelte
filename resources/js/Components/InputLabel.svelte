@@ -2,7 +2,7 @@
     export let value: string = '';
 </script>
 
-<label {...$$restProps} class="block font-medium text-sm text-gray-700">
+<label {...$$restProps} class="{$$props.class || ''} block font-medium text-sm text-gray-700">
     {#if value}
         <span>{value}</span>
     {:else}

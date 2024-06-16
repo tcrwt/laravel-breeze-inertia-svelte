@@ -7,6 +7,6 @@
     {...$$restProps}
     type="checkbox"
     bind:value
-    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+    class="{$$props.class || ''}  rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
 />
 
