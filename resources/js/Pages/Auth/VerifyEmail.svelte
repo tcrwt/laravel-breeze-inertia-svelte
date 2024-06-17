@@ -4,9 +4,9 @@ import GuestLayout from '@/Layouts/GuestLayout.svelte;
 import PrimaryButton from '@/Components/PrimaryButton.svelte;
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
-const props = defineProps<{
-    status?: string;
-}>();
+
+export let status: string = '';
+
 
 const form = useForm({});
 

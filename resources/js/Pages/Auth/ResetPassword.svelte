@@ -6,10 +6,10 @@ import PrimaryButton from '@/Components/PrimaryButton.svelte;
 import TextInput from '@/Components/TextInput.svelte;
 import { Head, useForm } from '@inertiajs/vue3';
 
-const props = defineProps<{
-    email: string;
-    token: string;
-}>();
+
+export let    email: string;
+export let    token: string;
+
 
 const form = useForm({
     token: props.token,
