@@ -1,5 +1,4 @@
 <script lang="ts">
-import { computed } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.svelte';
 import PrimaryButton from '@/Components/PrimaryButton.svelte';
 import { Link, useForm } from '@inertiajs/svelte';
@@ -14,7 +13,7 @@ const submit = () => {
     form.post(route('verification.send'));
 };
 
-const verificationLinkSent = computed(() => props.status === 'verification-link-sent');
+$: verificationLinkSent = status === 'verification-link-sent'
 </script>
 
 <svelte:head>
