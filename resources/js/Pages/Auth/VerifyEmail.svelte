@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.svelte;
 import PrimaryButton from '@/Components/PrimaryButton.svelte;
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Link, useForm } from '@inertiajs/svelte';
 
 
 export let status: string = '';
@@ -18,8 +18,11 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
 </script>
 
 
-    <GuestLayout>
-        <Head title="Email Verification" />
+    <svelte:head>
+    <title>Email Verification</title>
+</svelte:head>
+
+<GuestLayout>
 
         <div class="mb-4 text-sm text-gray-600">
             Thanks for signing up! Before getting started, could you verify your email address by clicking on the link

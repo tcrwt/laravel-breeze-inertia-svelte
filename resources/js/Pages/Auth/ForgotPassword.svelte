@@ -4,7 +4,7 @@
     import InputLabel from '@/Components/InputLabel.svelte';
     import PrimaryButton from '@/Components/PrimaryButton.svelte';
     import TextInput from '@/Components/TextInput.svelte';
-    import { Head, useForm } from '@inertiajs/svelte';
+    import { useForm } from '@inertiajs/svelte';
 
     export let status: string = '';
 
@@ -20,6 +20,7 @@
 <svelte:head>
     <title>Forgot Password</title>
 </svelte:head>
+
 <GuestLayout>
     <div class="mb-4 text-sm text-gray-600">
         Forgot your password? No problem. Just let us know your email address and we will

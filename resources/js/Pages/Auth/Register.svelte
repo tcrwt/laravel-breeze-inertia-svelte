@@ -4,7 +4,7 @@ import InputError from '@/Components/InputError.svelte;
 import InputLabel from '@/Components/InputLabel.svelte;
 import PrimaryButton from '@/Components/PrimaryButton.svelte;
 import TextInput from '@/Components/TextInput.svelte;
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Link, useForm } from '@inertiajs/svelte';
 
 const form = useForm({
     name: '',
@@ -23,8 +23,11 @@ const submit = () => {
 </script>
 
 
-    <GuestLayout>
-        <Head title="Register" />
+    <svelte:head>
+    <title>Register</title>
+</svelte:head>
+
+<GuestLayout>
 
         <form on:submit|preventDefault={submit}>
             <div>

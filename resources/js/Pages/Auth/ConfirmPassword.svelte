@@ -4,7 +4,7 @@ import InputError from '@/Components/InputError.svelte;
 import InputLabel from '@/Components/InputLabel.svelte;
 import PrimaryButton from '@/Components/PrimaryButton.svelte;
 import TextInput from '@/Components/TextInput.svelte;
-import { Head, useForm } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/svelte';
 
 const form = useForm({
     password: '',
@@ -20,8 +20,11 @@ const submit = () => {
 </script>
 
 
-    <GuestLayout>
-        <Head title="Confirm Password" />
+    <svelte:head>
+    <title>Confirm Password</title>
+</svelte:head>
+
+<GuestLayout>
 
         <div class="mb-4 text-sm text-gray-600">
             This is a secure area of the application. Please confirm your password before continuing.
