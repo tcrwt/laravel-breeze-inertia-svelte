@@ -22,7 +22,7 @@ const submit = () => {
 };
 </script>
 
-<template>
+
     <GuestLayout>
         <Head title="Register" />
 
@@ -102,4 +102,4 @@ const submit = () => {
             </div>
         </form>
     </GuestLayout>
-</template>
+

@@ -19,7 +19,7 @@ const submit = () => {
 };
 </script>
 
-<template>
+
     <GuestLayout>
         <Head title="Confirm Password" />
 
@@ -49,4 +49,4 @@ const submit = () => {
             </div>
         </form>
     </GuestLayout>
-</template>
+

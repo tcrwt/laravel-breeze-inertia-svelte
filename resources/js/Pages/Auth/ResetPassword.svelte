@@ -27,7 +27,7 @@ const submit = () => {
 };
 </script>
 
-<template>
+
     <GuestLayout>
         <Head title="Reset Password" />
 
@@ -85,4 +85,4 @@ const submit = () => {
             </div>
         </form>
     </GuestLayout>
-</template>
+

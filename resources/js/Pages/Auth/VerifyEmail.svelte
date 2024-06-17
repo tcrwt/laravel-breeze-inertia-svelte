@@ -17,7 +17,7 @@ const submit = () => {
 const verificationLinkSent = computed(() => props.status === 'verification-link-sent');
 </script>
 
-<template>
+
     <GuestLayout>
         <Head title="Email Verification" />
 
@@ -46,4 +46,4 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
             </div>
         </form>
     </GuestLayout>
-</template>
+
