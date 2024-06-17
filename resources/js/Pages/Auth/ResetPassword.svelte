@@ -1,30 +1,28 @@
 <script lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.svelte';
-import InputError from '@/Components/InputError.svelte';
-import InputLabel from '@/Components/InputLabel.svelte';
-import PrimaryButton from '@/Components/PrimaryButton.svelte';
-import TextInput from '@/Components/TextInput.svelte';
-import { useForm } from '@inertiajs/svelte';
+    import GuestLayout from '@/Layouts/GuestLayout.svelte';
+    import InputError from '@/Components/InputError.svelte';
+    import InputLabel from '@/Components/InputLabel.svelte';
+    import PrimaryButton from '@/Components/PrimaryButton.svelte';
+    import TextInput from '@/Components/TextInput.svelte';
+    import { useForm } from '@inertiajs/svelte';
 
+    export let email: string;
+    export let token: string;
 
-export let    email: string;
-export let    token: string;
-
-
-const form = useForm({
-    token: props.token,
-    email: props.email,
-    password: '',
-    password_confirmation: '',
-});
-
-const submit = () => {
-    $form.post(route('password.store'), {
-        onFinish: () => {
-            form.reset('password', 'password_confirmation');
-        },
+    const form = useForm({
+        token: props.token,
+        email: props.email,
+        password: '',
+        password_confirmation: '',
     });
-};
+
+    const submit = () => {
+        $form.post(route('password.store'), {
+            onFinish: () => {
+                $form.reset('password', 'password_confirmation');
+            },
+        });
+    };
 </script>
 
 <svelte:head>
