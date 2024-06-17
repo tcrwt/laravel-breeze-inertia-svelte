@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.svelte';
 import InputError from '@/Components/InputError.svelte';
 import InputLabel from '@/Components/InputLabel.svelte';
@@ -52,7 +52,7 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton :class="{ 'opacity-25': form.processing }" disabled={$form.processing}>
                     Email Password Reset Link
                 </PrimaryButton>
             </div>
