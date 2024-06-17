@@ -6,7 +6,6 @@
     import PrimaryButton from '@/Components/PrimaryButton.svelte';
     import TextInput from '@/Components/TextInput.svelte';
     import { Link, useForm } from '@inertiajs/svelte';
-    import { route } from '../../../../vendor/tightenco/ziggy/src/js'
 
 
     export let canResetPassword: boolean = false;
@@ -27,14 +26,14 @@
     };
 </script>
 
-<svelte:head >
+<svelte:head>
     <title>Log in</title>
 </svelte:head>
 
 <GuestLayout>
     {#if status}
         <div class="mb-4 font-medium text-sm text-green-600">
-            { status }
+            {status}
         </div>
     {/if}
 
@@ -87,10 +86,12 @@
                 </Link>
             {/if}
 
-            <PrimaryButton class="ms-4 {form.processing ? 'opacity-25' : ''}" disabled={form.processing}>
+            <PrimaryButton
+                class="ms-4 {form.processing ? 'opacity-25' : ''}"
+                disabled={form.processing}
+            >
                 Log in
             </PrimaryButton>
         </div>
     </form>
 </GuestLayout>
-
