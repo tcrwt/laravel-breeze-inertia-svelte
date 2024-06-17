@@ -10,8 +10,8 @@
     export let token: string;
 
     const form = useForm({
-        token: props.token,
-        email: props.email,
+        token: token,
+        email: email,
         password: '',
         password_confirmation: '',
     });
