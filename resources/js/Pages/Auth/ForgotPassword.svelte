@@ -50,7 +50,7 @@
 
         <div class="flex items-center justify-end mt-4">
             <PrimaryButton
-                class={form.processing ? 'opacity-25' : ''}
+                class={$form.processing ? 'opacity-25' : ''}
                 disabled={$form.processing}
             >
                 Email Password Reset Link
