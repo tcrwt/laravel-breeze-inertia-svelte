@@ -26,7 +26,7 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
-        <form @submit.prevent="submit">
+        <form on:submit|preventDefault={submit}>
             <div>
                 <InputLabel for="name" value="Name" />
 

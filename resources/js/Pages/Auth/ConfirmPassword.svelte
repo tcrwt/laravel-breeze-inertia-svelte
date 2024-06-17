@@ -27,7 +27,7 @@ const submit = () => {
             This is a secure area of the application. Please confirm your password before continuing.
         </div>
 
-        <form @submit.prevent="submit">
+        <form on:submit|preventDefault={submit}>
             <div>
                 <InputLabel for="password" value="Password" />
                 <TextInput
