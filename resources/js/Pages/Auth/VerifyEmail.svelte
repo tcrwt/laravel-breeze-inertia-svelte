@@ -10,7 +10,7 @@ export let status: string = '';
 const form = useForm({});
 
 const submit = () => {
-    form.post(route('verification.send'));
+    $form.post(route('verification.send'));
 };
 
 $: verificationLinkSent = status === 'verification-link-sent'
