@@ -35,7 +35,7 @@ const submit = () => {
                 id="name"
                 type="text"
                 class="mt-1 block w-full"
-                v-model="form.name"
+                bind:value={$form.name}
                 required
                 autofocus
                 autocomplete="name"
@@ -51,7 +51,7 @@ const submit = () => {
                 id="email"
                 type="email"
                 class="mt-1 block w-full"
-                v-model="form.email"
+                bind:value={$form.email}
                 required
                 autocomplete="username"
             />
@@ -66,7 +66,7 @@ const submit = () => {
                 id="password"
                 type="password"
                 class="mt-1 block w-full"
-                v-model="form.password"
+                bind:value={$form.password}
                 required
                 autocomplete="new-password"
             />
@@ -81,7 +81,7 @@ const submit = () => {
                 id="password_confirmation"
                 type="password"
                 class="mt-1 block w-full"
-                v-model="form.password_confirmation"
+                bind:value={$form.password_confirmation}
                 required
                 autocomplete="new-password"
             />
