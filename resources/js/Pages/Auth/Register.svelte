@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import GuestLayout from '@/Layouts/GuestLayout.svelte;
 import InputError from '@/Components/InputError.svelte;
 import InputLabel from '@/Components/InputLabel.svelte;

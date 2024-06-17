@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import { computed } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.svelte;
 import PrimaryButton from '@/Components/PrimaryButton.svelte;
