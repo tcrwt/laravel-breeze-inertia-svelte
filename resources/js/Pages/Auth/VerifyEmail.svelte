@@ -28,10 +28,12 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
         we will gladly send you another.
     </div>
 
-    <div class="mb-4 font-medium text-sm text-green-600" v-if="verificationLinkSent">
-        A new verification link has been sent to the email address you provided during
-        registration.
-    </div>
+    {#if verificationLinkSent}
+        <div class="mb-4 font-medium text-sm text-green-600">
+            A new verification link has been sent to the email address you provided during
+            registration.
+        </div>
+    {/if}
 
     <form on:submit|preventDefault={submit}>
         <div class="mt-4 flex items-center justify-between">
