@@ -1,4 +1,5 @@
 <script setup lang="ts">
+    import { onMount } from 'svelte';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 export let align: 'left' | 'right' = 'right';
@@ -25,8 +26,13 @@ const closeOnEscape = (e: KeyboardEvent) => {
     }
 };
 
-onMounted(() => document.addEventListener('keydown', closeOnEscape));
-onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
+onMount(()=>{
+    document.addEventListener('keydown', closeOnEscape);
+
+    return () => {
+        document.removeEventListener('keydown', closeOnEscape);
+    };
+})
 
 const widthClass = computed(() => {
     return {
