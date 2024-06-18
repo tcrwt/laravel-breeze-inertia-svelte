@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.svelte';
-
+    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.svelte';
 </script>
-
 
 <svelte:head>
     <title>Dashboard</title>
 </svelte:head>
-
 
 <AuthenticatedLayout>
     <svelte:fragment slot="header">
@@ -22,4 +19,3 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.svelte';
         </div>
     </div>
 </AuthenticatedLayout>
-
