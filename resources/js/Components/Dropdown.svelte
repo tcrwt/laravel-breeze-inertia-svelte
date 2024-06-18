@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { onMount } from 'svelte';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+
 
 export let align: 'left' | 'right' = 'right';
 // TODO: ... width as string :what:
@@ -34,21 +34,18 @@ onMount(()=>{
     };
 })
 
-const widthClass = computed(() => {
-    return {
-        48: 'w-48',
-    }[props.width.toString()];
-});
+$: widthClass = {48: 'w-48'}[props.width.toString()];
 
-const alignmentClasses = computed(() => {
+let alignmentClasses: string;
+$: {
     if (props.align === 'left') {
-        return 'ltr:origin-top-left rtl:origin-top-right start-0';
+        alignmentClasses= 'ltr:origin-top-left rtl:origin-top-right start-0';
     } else if (props.align === 'right') {
-        return 'ltr:origin-top-right rtl:origin-top-left end-0';
+        alignmentClasses= 'ltr:origin-top-right rtl:origin-top-left end-0';
     } else {
-        return 'origin-top';
+        alignmentClasses= 'origin-top';
     }
-});
+};
 
 let open = false;
 </script>
