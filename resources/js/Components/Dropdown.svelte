@@ -50,7 +50,7 @@ const alignmentClasses = computed(() => {
     }
 });
 
-const open = ref(false);
+let open = false;
 </script>
 
 <template>
