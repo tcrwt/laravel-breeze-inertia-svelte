@@ -4,7 +4,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 export let align: 'left' | 'right' = 'right';
 // TODO: ... width as string :what:
-export let width: string = '48';
+export let width: '48' = '48';
 export let contentClasses: string = 'py-1 bg-white';
 
 const props = withDefaults(
