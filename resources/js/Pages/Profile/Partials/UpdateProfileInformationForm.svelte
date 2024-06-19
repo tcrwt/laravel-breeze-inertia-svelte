@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Link, useForm, usePage } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.svelte';
+import InputLabel from '@/Components/InputLabel.svelte';
+import PrimaryButton from '@/Components/PrimaryButton.svelte';
+import TextInput from '@/Components/TextInput.svelte';
+import { Link, useForm, usePage } from '@inertiajs/svelte';
 
-defineProps<{
-    mustVerifyEmail?: Boolean;
-    status?: String;
-}>();
+
+  export let   mustVerifyEmail: boolean = false;
+  export let   status: string = '';
+
 
 const user = usePage().props.auth.user;
 
