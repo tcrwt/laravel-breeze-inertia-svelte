@@ -45,8 +45,9 @@ let open = false;
         </div>
 
         <!-- Full Screen Dropdown Overlay -->
-        <!-- v-show="open"  -->
+
         <div 
+        hidden={!open}
         class="fixed inset-0 z-40" on:click={()=>open = false}></div>
 
         <!-- <Transition
@@ -57,10 +58,9 @@ let open = false;
             leave-from-class="opacity-100 scale-100"
             leave-to-class="opacity-0 scale-95"
         > -->
-        <!-- v-show="open" -->
             <div
                 class="absolute z-50 mt-2 rounded-md shadow-lg {widthClass} {alignmentClasses}"
-                style="display: none"
+                hidden={!open}
                 on:click={()=>open = false}
             >
                 <div class="rounded-md ring-1 ring-black ring-opacity-5" :class="contentClasses">
