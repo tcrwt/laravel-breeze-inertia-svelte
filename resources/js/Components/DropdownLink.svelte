@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
     import { Link } from '@inertiajs/svelte';
 
     export let href: string;

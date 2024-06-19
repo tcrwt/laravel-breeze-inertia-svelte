@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.svelte';
 </script>
 

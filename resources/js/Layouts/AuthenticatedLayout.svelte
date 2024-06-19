@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
     import ApplicationLogo from '@/Components/ApplicationLogo.svelte';
     import Dropdown from '@/Components/Dropdown.svelte';
     import DropdownLink from '@/Components/DropdownLink.svelte';
