@@ -6,8 +6,8 @@
     import { useForm } from '@inertiajs/svelte';
     import { fade } from 'svelte/transition';
 
-    let passwordInput;
-    let currentPasswordInput;
+    let passwordInput: TextInput;
+    let currentPasswordInput: TextInput;
 
     const form = useForm({
         current_password: '',
@@ -24,18 +24,18 @@
             onError: () => {
                 if ($form.errors.password) {
                     $form.reset('password', 'password_confirmation');
-                    passwordInput.focus();
+                    passwordInput?.focus();
                 }
                 if ($form.errors.current_password) {
                     $form.reset('current_password');
-                    currentPasswordInput.focus();
+                    currentPasswordInput?.focus();
                 }
             },
         });
     };
 </script>
 
-<section {...$$restProps}> 
+<section {...$$restProps}>
     <header>
         <h2 class="text-lg font-medium text-gray-900">Update Password</h2>
 
