@@ -4,6 +4,7 @@ import InputLabel from '@/Components/InputLabel.svelte';
 import PrimaryButton from '@/Components/PrimaryButton.svelte';
 import TextInput from '@/Components/TextInput.svelte';
 import { useForm } from '@inertiajs/svelte';
+    import { fade } from 'svelte/transition';
 
 const passwordInput = ref<HTMLInputElement | null>(null);
 const currentPasswordInput = ref<HTMLInputElement | null>(null);
@@ -92,14 +93,9 @@ const updatePassword = () => {
         <div class="flex items-center gap-4">
             <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
 
-            <Transition
-                enter-active-class="transition ease-in-out"
-                enter-from-class="opacity-0"
-                leave-active-class="transition ease-in-out"
-                leave-to-class="opacity-0"
-            >
-                <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>
-            </Transition>
+            {#if $form.recentlySuccessful}
+                <p transition:fade class="text-sm text-gray-600">Saved.</p>
+            {/if}
         </div>
     </form>
 </section>
