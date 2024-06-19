@@ -7,18 +7,6 @@ export let align: 'left' | 'right' = 'right';
 export let width: '48' = '48';
 export let contentClasses: string = 'py-1 bg-white';
 
-const props = withDefaults(
-    defineProps<{
-        align?: 'left' | 'right';
-        width?: '48';
-        contentClasses?: string;
-    }>(),
-    {
-        align: 'right',
-        width: '48',
-        contentClasses: 'py-1 bg-white',
-    }
-);
 
 const closeOnEscape = (e: KeyboardEvent) => {
     if (open.value && e.key === 'Escape') {
@@ -34,13 +22,13 @@ onMount(()=>{
     };
 })
 
-$: widthClass = {48: 'w-48'}[props.width.toString()];
+$: widthClass = {48: 'w-48'}[width.toString()];
 
 let alignmentClasses: string;
 $: {
-    if (props.align === 'left') {
+    if (align === 'left') {
         alignmentClasses= 'ltr:origin-top-left rtl:origin-top-right start-0';
-    } else if (props.align === 'right') {
+    } else if (align === 'right') {
         alignmentClasses= 'ltr:origin-top-right rtl:origin-top-left end-0';
     } else {
         alignmentClasses= 'origin-top';
@@ -50,34 +38,35 @@ $: {
 let open = false;
 </script>
 
-<template>
+
     <div class="relative">
-        <div @click="open = !open">
+        <div on:click={()=>{open = !open}}>
             <slot name="trigger" />
         </div>
 
         <!-- Full Screen Dropdown Overlay -->
-        <div v-show="open" class="fixed inset-0 z-40" @click="open = false"></div>
+        <!-- v-show="open"  -->
+        <div 
+        class="fixed inset-0 z-40" on:click={()=>open = false}></div>
 
-        <Transition
+        <!-- <Transition
             enter-active-class="transition ease-out duration-200"
             enter-from-class="opacity-0 scale-95"
             enter-to-class="opacity-100 scale-100"
             leave-active-class="transition ease-in duration-75"
             leave-from-class="opacity-100 scale-100"
             leave-to-class="opacity-0 scale-95"
-        >
+        > -->
+        <!-- v-show="open" -->
             <div
-                v-show="open"
-                class="absolute z-50 mt-2 rounded-md shadow-lg"
-                :class="[widthClass, alignmentClasses]"
+                class="absolute z-50 mt-2 rounded-md shadow-lg {widthClass} {alignmentClasses}"
                 style="display: none"
-                @click="open = false"
+                on:click={()=>open = false}
             >
                 <div class="rounded-md ring-1 ring-black ring-opacity-5" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>
-        </Transition>
+        <!-- </Transition> -->
     </div>
-</template>
+
