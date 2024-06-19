@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import InputError from '@/Components/InputError.svelte';
+import InputLabel from '@/Components/InputLabel.svelte';
+import PrimaryButton from '@/Components/PrimaryButton.svelte';
+import TextInput from '@/Components/TextInput.svelte';
+import { useForm } from '@inertiajs/svelte';
 
 const passwordInput = ref<HTMLInputElement | null>(null);
 const currentPasswordInput = ref<HTMLInputElement | null>(null);
