@@ -1,42 +1,41 @@
 <script setup lang="ts">
-import InputError from '@/Components/InputError.svelte';
-import InputLabel from '@/Components/InputLabel.svelte';
-import PrimaryButton from '@/Components/PrimaryButton.svelte';
-import TextInput from '@/Components/TextInput.svelte';
-import { useForm } from '@inertiajs/svelte';
+    import InputError from '@/Components/InputError.svelte';
+    import InputLabel from '@/Components/InputLabel.svelte';
+    import PrimaryButton from '@/Components/PrimaryButton.svelte';
+    import TextInput from '@/Components/TextInput.svelte';
+    import { useForm } from '@inertiajs/svelte';
     import { fade } from 'svelte/transition';
 
-const passwordInput = ref<HTMLInputElement | null>(null);
-const currentPasswordInput = ref<HTMLInputElement | null>(null);
+    let passwordInput;
+    let currentPasswordInput;
 
-const form = useForm({
-    current_password: '',
-    password: '',
-    password_confirmation: '',
-});
-
-const updatePassword = () => {
-    form.put(route('password.update'), {
-        preserveScroll: true,
-        onSuccess: () => {
-            form.reset();
-        },
-        onError: () => {
-            if (form.errors.password) {
-                form.reset('password', 'password_confirmation');
-                passwordInput.value?.focus();
-            }
-            if (form.errors.current_password) {
-                form.reset('current_password');
-                currentPasswordInput.value?.focus();
-            }
-        },
+    const form = useForm({
+        current_password: '',
+        password: '',
+        password_confirmation: '',
     });
-};
+
+    const updatePassword = () => {
+        $form.put(route('password.update'), {
+            preserveScroll: true,
+            onSuccess: () => {
+                $form.reset();
+            },
+            onError: () => {
+                if ($form.errors.password) {
+                    $form.reset('password', 'password_confirmation');
+                    passwordInput.focus();
+                }
+                if ($form.errors.current_password) {
+                    $form.reset('current_password');
+                    currentPasswordInput.focus();
+                }
+            },
+        });
+    };
 </script>
 
-
-<section>
+<section {...$$restProps}> 
     <header>
         <h2 class="text-lg font-medium text-gray-900">Update Password</h2>
 
@@ -45,20 +44,20 @@ const updatePassword = () => {
         </p>
     </header>
 
-    <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
+    <form on:submit|preventDefault={updatePassword} class="mt-6 space-y-6">
         <div>
             <InputLabel for="current_password" value="Current Password" />
 
             <TextInput
                 id="current_password"
-                ref="currentPasswordInput"
-                v-model="form.current_password"
+                bind:this={currentPasswordInput}
+                bind:value={$form.current_password}
                 type="password"
                 class="mt-1 block w-full"
                 autocomplete="current-password"
             />
 
-            <InputError :message="form.errors.current_password" class="mt-2" />
+            <InputError message={$form.errors.current_password} class="mt-2" />
         </div>
 
         <div>
@@ -66,14 +65,14 @@ const updatePassword = () => {
 
             <TextInput
                 id="password"
-                ref="passwordInput"
-                v-model="form.password"
+                bind:this={passwordInput}
+                bind:value={$form.password}
                 type="password"
                 class="mt-1 block w-full"
                 autocomplete="new-password"
             />
 
-            <InputError :message="form.errors.password" class="mt-2" />
+            <InputError message={$form.errors.password} class="mt-2" />
         </div>
 
         <div>
@@ -81,17 +80,17 @@ const updatePassword = () => {
 
             <TextInput
                 id="password_confirmation"
-                v-model="form.password_confirmation"
+                bind:value={$form.password_confirmation}
                 type="password"
                 class="mt-1 block w-full"
                 autocomplete="new-password"
             />
 
-            <InputError :message="form.errors.password_confirmation" class="mt-2" />
+            <InputError message={$form.errors.password_confirmation} class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
-            <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+            <PrimaryButton disabled={$form.processing}>Save</PrimaryButton>
 
             {#if $form.recentlySuccessful}
                 <p transition:fade class="text-sm text-gray-600">Saved.</p>
@@ -99,4 +98,3 @@ const updatePassword = () => {
         </div>
     </form>
 </section>
-
