@@ -52,8 +52,8 @@
 
     {#if open}
         <div
-            in:scale={{ start: 0.95, opacity: 0, duration: 200, easing: cubicIn }}
-            out:scale={{ start: 0.95, opacity: 0, duration: 75, easing: cubicOut }}
+            in:scale={{ start: 0.95, opacity: 0, duration: 200, easing: cubicOut }}
+            out:scale={{ start: 0.95, opacity: 0, duration: 75, easing: cubicIn  }}
         >
             <div
                 class="absolute z-50 mt-2 rounded-md shadow-lg {widthClass} {alignmentClasses}"
