@@ -1,24 +1,23 @@
 <script lang="ts">
-import InputError from '@/Components/InputError.svelte';
-import InputLabel from '@/Components/InputLabel.svelte';
-import PrimaryButton from '@/Components/PrimaryButton.svelte';
-import TextInput from '@/Components/TextInput.svelte';
-import { Link, useForm, page } from '@inertiajs/svelte';
-import { fade }  from 'svelte/transition';
+    import InputError from '@/Components/InputError.svelte';
+    import InputLabel from '@/Components/InputLabel.svelte';
+    import PrimaryButton from '@/Components/PrimaryButton.svelte';
+    import TextInput from '@/Components/TextInput.svelte';
+    import { Link, useForm, page } from '@inertiajs/svelte';
+    import { fade } from 'svelte/transition';
 
-  export let   mustVerifyEmail: boolean = false;
-  export let   status: string = '';
+    export let mustVerifyEmail: boolean = false;
+    export let status: string = '';
 
+    const user = $page.props.auth.user;
 
-const user = $page.props.auth.user;
-
-const form = useForm({
-    name: user.name,
-    email: user.email,
-});
+    const form = useForm({
+        name: user.name,
+        email: user.email,
+    });
 </script>
 
-<template>
+
     <section>
         <header>
             <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
@@ -28,7 +27,10 @@ const form = useForm({
             </p>
         </header>
 
-        <form on:submit|preventDefault={$form.patch(route('profile.update'))} class="mt-6 space-y-6">
+        <form
+            on:submit|preventDefault={$form.patch(route('profile.update'))}
+            class="mt-6 space-y-6"
+        >
             <div>
                 <InputLabel for="name" value="Name" />
 
@@ -59,9 +61,9 @@ const form = useForm({
 
                 <InputError class="mt-2" message={form.errors.email} />
             </div>
-            
+
             {#if mustVerifyEmail && user.email_verified_at === null}
-                <div >
+                <div>
                     <p class="text-sm mt-2 text-gray-800">
                         Your email address is unverified.
                         <Link
@@ -73,7 +75,7 @@ const form = useForm({
                             Click here to re-send the verification email.
                         </Link>
                     </p>
-    
+
                     <div
                         hidden={status !== 'verification-link-sent'}
                         class="mt-2 font-medium text-sm text-green-600"
@@ -86,11 +88,10 @@ const form = useForm({
             <div class="flex items-center gap-4">
                 <PrimaryButton disabled={$form.processing}>Save</PrimaryButton>
 
-     
                 {#if $form.recentlySuccessful}
-                        <p transition:fade={{}} class="text-sm text-gray-600">Saved.</p>
+                    <p transition:fade={{}} class="text-sm text-gray-600">Saved.</p>
                 {/if}
             </div>
         </form>
     </section>
-</template>
+
