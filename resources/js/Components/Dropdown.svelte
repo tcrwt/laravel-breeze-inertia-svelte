@@ -7,8 +7,8 @@
     export let contentClasses: string = 'py-1 bg-white';
 
     const closeOnEscape = (e: KeyboardEvent) => {
-        if (open.value && e.key === 'Escape') {
-            open.value = false;
+        if (open && e.key === 'Escape') {
+            open = false;
         }
     };
 
