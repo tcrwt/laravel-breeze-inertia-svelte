@@ -17,7 +17,7 @@
     });
 </script>
 
-<section {...$$restProps}>
+<section {...$$restProps} class={$$props.class || ''}>
     <header>
         <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
 
