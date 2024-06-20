@@ -1,11 +1,13 @@
 <script lang="ts">
+    import Portal from '@/Components/Portal.svelte';
     import { onMount } from 'svelte';
+    import { cubicIn, cubicOut } from 'svelte/easing';
+    import { fade, scale } from 'svelte/transition';
 
     export let show: boolean = false;
     export let maxWidth: 'sm' | 'md' | 'lg' | 'xl' | '2xl' = '2xl';
     export let closeable: boolean = true;
-
-    const emit = defineEmits(['close']);
+    export let closeModal: () => void;
 
     $: {
         if (show) {
@@ -17,7 +19,7 @@
 
     const close = () => {
         if (closeable) {
-            emit('close');
+            closeModal();
         }
     };
 
@@ -45,48 +47,35 @@
     }[maxWidth];
 </script>
 
-<template>
-    <Teleport to="body">
-        <Transition leave-active-class="duration-200">
+{#if show}
+    <Portal>
+        <div
+            hidden={!show}
+            class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
+            scroll-region
+        >
+                <div
+                    in:fade={{ duration: 300, easing: cubicOut }}
+                    out:fade={{ duration: 200, easing: cubicIn }}
+                    class="fixed inset-0 transform transition-all"
+                    on:click={close}
+                >
+                    <div class="absolute inset-0 bg-gray-500 opacity-75" />
+                </div>
+            <!-- TODO: Vue's version has breakpoint-dependent transitions, nice! 
+                    No obvious way to do this in Svelte – I could just pick one or 
+                    do a small js thing to detect the current breakpoint. Seems gross.
+                    For now, just use the large transition for all breakpoints.
+            -->
             <div
-                v-show="show"
-                class="fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
-                scroll-region
+                in:scale={{ duration: 300, easing: cubicOut, start: 0.95, opacity: 0 }}
+                out:scale={{ duration: 200, easing: cubicIn, start: 0.95, opacity: 0 }}
+                class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto {maxWidthClass}"
             >
-                <Transition
-                    enter-active-class="ease-out duration-300"
-                    enter-from-class="opacity-0"
-                    enter-to-class="opacity-100"
-                    leave-active-class="ease-in duration-200"
-                    leave-from-class="opacity-100"
-                    leave-to-class="opacity-0"
-                >
-                    <div
-                        v-show="show"
-                        class="fixed inset-0 transform transition-all"
-                        @click="close"
-                    >
-                        <div class="absolute inset-0 bg-gray-500 opacity-75" />
-                    </div>
-                </Transition>
-
-                <Transition
-                    enter-active-class="ease-out duration-300"
-                    enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    enter-to-class="opacity-100 translate-y-0 sm:scale-100"
-                    leave-active-class="ease-in duration-200"
-                    leave-from-class="opacity-100 translate-y-0 sm:scale-100"
-                    leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                >
-                    <div
-                        v-show="show"
-                        class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto"
-                        :class="maxWidthClass"
-                    >
-                        <slot v-if="show" />
-                    </div>
-                </Transition>
+                {#if show}
+                    <slot />
+                {/if}
             </div>
-        </Transition>
-    </Teleport>
-</template>
+        </div>
+    </Portal>
+{/if}
