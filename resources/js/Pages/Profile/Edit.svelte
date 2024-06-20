@@ -1,14 +1,11 @@
 <script lang="ts">
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import DeleteUserForm from './Partials/DeleteUserForm.vue';
-import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
-import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
-import { Head } from '@inertiajs/vue3';
+    import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.svelte';
+    import DeleteUserForm from './Partials/DeleteUserForm.svelte';
+    import UpdatePasswordForm from './Partials/UpdatePasswordForm.svelte';
+    import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.svelte';
 
-
-export let mustVerifyEmail: boolean = false;
+    export let mustVerifyEmail: boolean = false;
     export let status: string = '';
-
 </script>
 
 <svelte:head>
@@ -40,4 +37,3 @@ export let mustVerifyEmail: boolean = false;
         </div>
     </div>
 </AuthenticatedLayout>
-
