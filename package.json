@@ -7,11 +7,8 @@
     },
     "devDependencies": {
         "@inertiajs/svelte": "^1.2.0",
-        "@inertiajs/vue3": "^1.0.0",
         "@sveltejs/vite-plugin-svelte": "^3.1.1",
         "@tailwindcss/forms": "^0.5.3",
-        "@vitejs/plugin-vue": "^5.0.0",
-        "@vue/server-renderer": "^3.4.0",
         "autoprefixer": "^10.4.12",
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0",
@@ -19,8 +16,6 @@
         "svelte": "^4.2.18",
         "tailwindcss": "^3.2.1",
         "typescript": "^5.0.2",
-        "vite": "^5.0",
-        "vue": "^3.4.0",
-        "vue-tsc": "^1.8.27"
+        "vite": "^5.0"
     }
 }
