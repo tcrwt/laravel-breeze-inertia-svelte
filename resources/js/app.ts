@@ -1,34 +1,21 @@
-import './bootstrap';
 import '../css/app.css';
+import './bootstrap';
 
-import { createApp, h, DefineComponent } from 'vue';
-import { createInertiaApp } from '@inertiajs/vue3';
-import { createInertiaApp as createInertiaAppSvelte } from '@inertiajs/svelte';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import { createInertiaApp } from '@inertiajs/svelte';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob<DefineComponent>('./Pages/**/*.vue')),
-    setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
-            .use(plugin)
-            .use(ZiggyVue)
-            .mount(el);
-    },
-    progress: {
-        color: '#4B5563',
-    },
-});
-
-createInertiaAppSvelte({
     resolve: (name) => {
         const pages = import.meta.glob('./Pages/**/*.svelte', { eager: true });
         return pages[`./Pages/${name}.svelte`];
     },
     setup({ el, App, props }) {
         new App({ target: el, props, hydrate: true });
+    },
+    progress: {
+        color: '#4B5563',
     },
 });
