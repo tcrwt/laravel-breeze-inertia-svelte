@@ -26,15 +26,12 @@
         $form.delete(route('profile.destroy'), {
             preserveScroll: true,
             onSuccess: () => {
-                console.log('onSuccess');
                 closeModal();
             },
             onError: () => {
-                console.log('onError');
                 passwordInput?.focus();
             },
             onFinish: () => {
-                console.log('onFinish');
                 $form.reset();
             },
         });
@@ -53,9 +50,7 @@
             document.removeEventListener('keyup', onKeyUp);
         };
     });
-    $: {
-        console.log({ confirmingUserDeletion });
-    }
+    
     const closeModal = () => {
         confirmingUserDeletion = false;
 
